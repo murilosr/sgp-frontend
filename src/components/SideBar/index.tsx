@@ -18,8 +18,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
-
-const drawerWidth = 240;
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function ClippedDrawer() {
 
@@ -31,9 +30,13 @@ export default function ClippedDrawer() {
         setOpen(!open);
     };
 
+    const isMobile = useMediaQuery('(max-width:600px)');
+    const isTablet = useMediaQuery('(max-width:900px)');
+    const drawerWidth = isMobile?"100vw":240;
+
     return (
         <Drawer
-            variant="persistent"
+            variant={isMobile||isTablet?"temporary":"persistent"}
             open={sidebarOpen}
             sx={{
                 width: sidebarOpen?drawerWidth:0,

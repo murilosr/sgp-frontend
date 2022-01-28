@@ -9,10 +9,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Avatar from '@mui/material/Avatar';
 import { useDispatch } from 'react-redux';
 import {sidebarToggle} from 'store/slices/ui';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const TitleBar = () => {
 
     const dispatch = useDispatch();
+    const isMobile = useMediaQuery('(max-width:600px)');
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -31,10 +33,14 @@ const TitleBar = () => {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         SGP
                     </Typography>
-                    <Button variant="outlined" color="inherit">
-                        <Avatar sx={{ backgroundColor: "rgb(103, 58, 183)", width: 32, height: 32, marginRight: 1 }}><Typography fontSize={16} fontWeight={"bold"}>MR</Typography></Avatar>
-                        Login
-                    </Button>
+                    {
+                        !isMobile? (
+                        <Button variant="outlined" color="inherit">
+                            <Avatar sx={{ backgroundColor: "rgb(103, 58, 183)", width: 32, height: 32, marginRight: 1 }}><Typography fontSize={16} fontWeight={"bold"}>MR</Typography></Avatar>
+                            Login
+                        </Button>
+                        ):null
+                    }
                 </Toolbar>
             </AppBar>
         </Box>
