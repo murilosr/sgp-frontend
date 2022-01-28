@@ -16,77 +16,78 @@ import ScoreIcon from '@mui/icons-material/Score';
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store';
 
 const drawerWidth = 240;
 
 export default function ClippedDrawer() {
 
-  const [open, setOpen] = React.useState(true);
+    const sidebarOpen = useSelector((state: RootState) => state.ui.sidebarOpen);
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+    const [open, setOpen] = React.useState(true);
 
-  return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <Drawer
-        variant="persistent"
-        open={true}
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-        }}
-      >
-        <Toolbar />
-        <Box sx={{ overflow: 'auto' }}>
-          <List>
-              <ListItem button key={"Dashboard"}>
-                <ListItemIcon>
-                  <TuneIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Dashboard"} />
-              </ListItem>
-              <ListItem button key={"Projetos"}>
-                <ListItemIcon>
-                  <WorkOutlineIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Projetos"} />
-              </ListItem>
-              <ListItem button key={"Cronograma"}>
-                <ListItemIcon>
-                  <TodayIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Cronograma"} />
-              </ListItem>
-              <ListItem button key={"Relatórios"}>
-                <ListItemIcon>
-                  <ScoreIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Relatórios"} />
-              </ListItem>
-              <ListItem button key={"Usuários"} onClick={handleClick}>
-                <ListItemIcon>
-                  <PeopleOutlineIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Usuários"} />
-                {open ? <ExpandLess /> : <ExpandMore />}
-              </ListItem>
+    const handleClick = () => {
+        setOpen(!open);
+    };
 
-              <Collapse in={open} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemIcon>
-                    <PeopleOutlineIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Ver todos" />
-                  </ListItemButton>
+    return (
+        <Drawer
+            variant="persistent"
+            open={sidebarOpen}
+            sx={{
+                width: sidebarOpen?drawerWidth:0,
+                flexShrink: 0,
+                [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
+            }}
+        >
+            <Toolbar />
+            <Box sx={{ overflow: 'auto' }}>
+                <List>
+                    <ListItem button key={"Dashboard"}>
+                        <ListItemIcon>
+                            <TuneIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={"Dashboard"} />
+                    </ListItem>
+                    <ListItem button key={"Projetos"}>
+                        <ListItemIcon>
+                            <WorkOutlineIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={"Projetos"} />
+                    </ListItem>
+                    <ListItem button key={"Cronograma"}>
+                        <ListItemIcon>
+                            <TodayIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={"Cronograma"} />
+                    </ListItem>
+                    <ListItem button key={"Relatórios"}>
+                        <ListItemIcon>
+                            <ScoreIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={"Relatórios"} />
+                    </ListItem>
+                    <ListItem button key={"Usuários"} onClick={handleClick}>
+                        <ListItemIcon>
+                            <PeopleOutlineIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={"Usuários"} />
+                        {open ? <ExpandLess /> : <ExpandMore />}
+                    </ListItem>
+
+                    <Collapse in={open} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <ListItemButton sx={{ pl: 4 }}>
+                                <ListItemIcon>
+                                    <PeopleOutlineIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Ver todos" />
+                            </ListItemButton>
+                        </List>
+                    </Collapse>
                 </List>
-              </Collapse>
-          </List>
-        </Box>
-      </Drawer>
-    </Box>
-  );
+            </Box>
+        </Drawer>
+    );
 }
