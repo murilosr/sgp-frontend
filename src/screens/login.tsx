@@ -7,6 +7,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import React from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
 
 const LoginTitleBar = () => {
     return (
@@ -22,6 +24,12 @@ const LoginTitleBar = () => {
 
 const LoginScreen = () => {
 
+    const navigate = useNavigate();
+
+    const loginButtonHandler = (event : React.MouseEvent<HTMLElement>) => {
+        navigate("/", {replace: true});
+    }
+
     return (
         <Box sx={{ display: 'flex' }}>
             <LoginTitleBar />
@@ -36,7 +44,7 @@ const LoginScreen = () => {
                             <Typography variant="h5" sx={{marginBottom: 2}}>Login SGP</Typography>
                             <TextField id="email" type="email" label="Email" variant="outlined" fullWidth sx={{marginBottom: 2}}/>
                             <TextField id="password" type="password" label="Senha" variant="outlined" fullWidth sx={{marginBottom: 2}}/>
-                            <Button variant="contained" fullWidth sx={{marginBottom: 2}}>Entrar</Button>
+                            <Button variant="contained" fullWidth sx={{marginBottom: 2}} onClick={loginButtonHandler} >Entrar</Button>
                             <a href="#"><Typography variant="body1" color="#1976D2">Esqueceu a senha?</Typography></a>
                         </Box>
                     </Grid>

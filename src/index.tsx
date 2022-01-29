@@ -8,14 +8,12 @@ import store from 'store';
 import LoggedInTemplate from 'screens/loggedInTemplate';
 import DashboardScreen from 'screens/dashboard';
 import LoginScreen from 'screens/login';
+import Router from 'router';
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            {/* <LoggedInTemplate>
-                <DashboardScreen />
-            </LoggedInTemplate> */}
-            <LoginScreen />
+            <Router />
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')
