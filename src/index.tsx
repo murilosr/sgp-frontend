@@ -1,18 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import store from 'store';
 
+import LoggedInTemplate from 'screens/loggedInTemplate';
+import DashboardScreen from 'screens/dashboard';
+import LoginScreen from 'screens/login';
+
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Provider store={store}>
+            {/* <LoggedInTemplate>
+                <DashboardScreen />
+            </LoggedInTemplate> */}
+            <LoginScreen />
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

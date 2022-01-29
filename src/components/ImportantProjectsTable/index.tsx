@@ -3,6 +3,9 @@ import DataTable from 'react-data-table-component';
 import Paper from '@mui/material/Paper';
 import Chip from '@mui/material/Chip';
 import Button from '@mui/material/Button';
+import fakeUsers from 'fakedata/users';
+import ProjectMembersAvatarRow from "components/ProjectMembersAvatarRow";
+import data from 'fakedata/importantProjectsTable';
 
 const pillStyle = {
     minWidth: "70px",
@@ -13,12 +16,14 @@ const columns = [
     {
         name: 'Nome',
         selector: (row : any) => row.title,
-        sortable: true,
         grow: 1
     },
     {
         name: 'Membros',
-        selector: (row : any) => row.year,
+        // selector: (row : any) => fakeUsers,
+        cell: (row : any) => {
+            return <ProjectMembersAvatarRow data={fakeUsers} maxDisplay={3} />
+        },
         center: true
     },
     {
@@ -67,34 +72,7 @@ const columns = [
     }
 ];
 
-const data = [
-    {
-        id: 1,
-        title: 'Beetlejuice',
-        year: '1988',
-        priority : "high"
-    },
-    {
-        id: 2,
-        title: 'Ghostbusters',
-        year: '1984',
-        priority : "low"
-    },
-    {
-        id: 3,
-        title: 'Ghostbusters',
-        year: '1984',
-        priority : "medium"
-    },
-    {
-        id: 4,
-        title: 'Ghostbusters',
-        year: '1984',
-        priority : "loww"
-    },
-]
-
-const ImportantProjectsTableWidget = () => {
+const ImportantProjectsTable = () => {
     return (
         <Paper sx={{display:'flex', flexDirection: "column", padding: 2}}>
             <DataTable
@@ -110,4 +88,4 @@ const ImportantProjectsTableWidget = () => {
     )
 }
 
-export default ImportantProjectsTableWidget;
+export default ImportantProjectsTable;
