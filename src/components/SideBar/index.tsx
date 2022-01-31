@@ -19,6 +19,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { Link } from 'react-router-dom';
 
 export default function ClippedDrawer() {
 
@@ -47,18 +48,22 @@ export default function ClippedDrawer() {
             <Toolbar />
             <Box sx={{ overflow: 'auto' }}>
                 <List>
-                    <ListItem button key={"Dashboard"}>
-                        <ListItemIcon>
-                            <TuneIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={"Dashboard"} />
-                    </ListItem>
-                    <ListItem button key={"Projetos"}>
-                        <ListItemIcon>
-                            <WorkOutlineIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={"Projetos"} />
-                    </ListItem>
+                    <Link to={"/"}>
+                        <ListItem button key={"Dashboard"}>
+                            <ListItemIcon>
+                                <TuneIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Dashboard"}/>
+                        </ListItem>
+                    </Link>
+                    <Link to={"/projects"}> 
+                        <ListItem button key={"Projetos"}>
+                            <ListItemIcon>
+                                <WorkOutlineIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={"Projetos"} />
+                        </ListItem>
+                    </Link>
                     <ListItem button key={"Cronograma"}>
                         <ListItemIcon>
                             <TodayIcon />
