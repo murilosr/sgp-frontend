@@ -3,6 +3,7 @@ import DashboardScreen from "screens/dashboard";
 import LoginScreen from "screens/login";
 import LoggedInTemplate from "screens/loggedInTemplate";
 import ProjectsScreen from "screens/projects";
+import ProjectScreen from "screens/project";
 
 const Router = () => {
     return (
@@ -16,6 +17,11 @@ const Router = () => {
                 <Route path="/projects" element={(
                     <LoggedInTemplate>
                         <ProjectsScreen />
+                    </LoggedInTemplate>
+                )} />
+                <Route path="/projects/:id" element={(
+                    <LoggedInTemplate>
+                        <ProjectScreen />
                     </LoggedInTemplate>
                 )} />
                 <Route path="/login" element={<LoginScreen />} />
