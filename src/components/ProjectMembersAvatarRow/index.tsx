@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import IUser from "interfaces/users";
-import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
+import UserAvatar from "components/UserAvatar";
 import Typography from "@mui/material/Typography";
 
 const ProjectMembersAvatarRow = (props: {data : Array<IUser>, maxDisplay? : number}) => {
@@ -19,19 +18,15 @@ const ProjectMembersAvatarRow = (props: {data : Array<IUser>, maxDisplay? : numb
     }
 
     return (
-        <Box sx={{display: "flex", flexDirection: "row"}}>
+        <Box sx={{display: "flex", flexDirection: "row", alignItems: "center"}}>
             {
                 data.map(member => {
-                    return (
-                        <Tooltip key={member._id} title={member.name} arrow>
-                            <Avatar src={member.avatarUrl}>TR</Avatar>
-                        </Tooltip>
-                    )
+                    return <UserAvatar user={member} />
                 })
             }
             {
                 plusRemaining > 0?(
-                    <Box sx={{display: "flex", width: "40px", height: "40px", alignItems: "center", justifyContent: "start", paddingLeft: "5px"}}>
+                    <Box sx={{display: "flex", alignItems: "center", justifyContent: "start", paddingLeft: "5px"}}>
                         <Typography variant="button" color="#1976d2">+{plusRemaining}</Typography>
                     </Box>
                 ):null

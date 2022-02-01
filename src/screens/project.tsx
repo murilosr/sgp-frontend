@@ -16,6 +16,7 @@ import { useParams } from "react-router-dom";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import TabPanel from "components/TabPanel";
+import TaskList from "components/TaskList";
 
 const ProjectScreen = () => {
     const urlParams = useParams();
@@ -44,7 +45,7 @@ const ProjectScreen = () => {
                 </Box>
                 <Box sx={{p: 2}}>
                     <TabPanel idPrefix="tab-project" value={activeTab} index={0}>
-                        Tab Tarefas
+                        <TaskList />
                     </TabPanel>
                     <TabPanel idPrefix="tab-project" value={activeTab} index={1}>
                         Tab Membros
