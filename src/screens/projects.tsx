@@ -7,8 +7,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import TextField from "@mui/material/TextField";
 import Divider from "@mui/material/Divider";
-import Button from "@mui/material/Button";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import DataTable from 'react-data-table-component';
@@ -17,6 +15,7 @@ import fakeUsers from 'fakedata/users';
 import ProjectMembersAvatarRow from 'components/ProjectMembersAvatarRow';
 import InputAdornment from "@mui/material/InputAdornment";
 import { IconButton } from "@mui/material";
+import ProjectFilterRow from "components/ProjectFilterRow";
 
 const pillStyle = {
     minWidth: "70px",
@@ -104,37 +103,12 @@ const ProjectsScreen = () => {
                         />
                     </Box>
                     <Divider sx={{marginBottom: 2}} />
-                    <Box sx={{display: "flex", marginBottom: 2}}>
-                        <Button
-                            endIcon={<KeyboardArrowDownIcon />}
-                            sx={{color: "#000"}}
-                        >
-                            Status
-                        </Button>
-                        <Button
-                            endIcon={<KeyboardArrowDownIcon />}
-                            sx={{color: "#000"}}
-                        >
-                            Membros
-                        </Button>
-                        <Button
-                            endIcon={<KeyboardArrowDownIcon />}
-                            sx={{color: "#000"}}
-                        >
-                            Prioridade
-                        </Button>
-                        <Button
-                            endIcon={<KeyboardArrowDownIcon />}
-                            sx={{color: "#000"}}
-                        >
-                            Risco
-                        </Button>
-                    </Box>
-                    <Divider sx={{marginBottom: 2}} />
-                    <Box sx={{marginBottom: 2, paddingLeft: 1}}>
+                    <ProjectFilterRow />
+                    {/* <Divider sx={{marginBottom: 2}} /> */}
+                    <Box sx={{marginBottom: 2}}>
                         <Typography sx={{color: "rgba(0,0,0,0.54)"}}>Nenhum filtro ativo</Typography>
                     </Box>
-                    <Divider />
+                    {/* <Divider /> */}
                     <DataTable
                         columns = {columns}
                         data = {data}

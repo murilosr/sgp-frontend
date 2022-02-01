@@ -23,7 +23,7 @@ const ProjectMembersAvatarRow = (props: {data : Array<IUser>, maxDisplay? : numb
             {
                 data.map(member => {
                     return (
-                        <Tooltip title={member.name} arrow>
+                        <Tooltip key={member._id} title={member.name} arrow>
                             <Avatar src={member.avatarUrl}>TR</Avatar>
                         </Tooltip>
                     )
