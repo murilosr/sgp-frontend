@@ -7,7 +7,7 @@ const twoDigitsNumber = (n : number) : string => {
       })
 }
 
-const DatePill = (props: {startDate? : Date, endDate? : Date, checkDate? : boolean}) => {
+const DatePill = (props: {startDate? : Date, endDate? : Date, checkDate? : boolean, size? : "small"}) => {
 
     const startDate = props.startDate?`${twoDigitsNumber(props.startDate.getUTCDate())}/${twoDigitsNumber(props.startDate.getUTCMonth() + 1)}`:null;
     const endDate = props.endDate?`${twoDigitsNumber(props.endDate.getUTCDate())}/${twoDigitsNumber(props.endDate.getUTCMonth() + 1)}`:null;
@@ -17,6 +17,7 @@ const DatePill = (props: {startDate? : Date, endDate? : Date, checkDate? : boole
     let label = "";
     let variant : "outlined"|undefined = checkDate?undefined:"outlined";
     let color : "success"|"error"|undefined = checkDate?"success":undefined;
+    const size = props.size;
 
     const dateNow = new Date(Date.now());
 
@@ -49,7 +50,7 @@ const DatePill = (props: {startDate? : Date, endDate? : Date, checkDate? : boole
     }
 
     return (
-        <Chip label={label} color={color} variant={variant} />
+        <Chip label={label} color={color} variant={variant} size={size}/>
     )
 }
 

@@ -20,7 +20,7 @@ const TaskList = () => {
             <Box display={"flex"} flexDirection={"row"} alignItems={"center"} sx={{mb: 2}}>
                 <WorkIcon sx={{mr: 1}} />
                 <Typography variant="h5" sx={{marginRight: 1}}>Tarefas do projeto</Typography>
-                <DatePill startDate={new Date(2022,0,1)}  endDate={new Date(2022,1,1)} checkDate={false} />
+                <DatePill startDate={new Date(2022,0,1)}  endDate={new Date(2022,1,1)} checkDate={false} size="small" />
                 <Button variant="contained" sx={{marginLeft: "auto"}} startIcon={<AddIcon />}>Nova tarefa</Button>
             </Box>
             <Accordion>

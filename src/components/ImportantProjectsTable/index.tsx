@@ -28,12 +28,12 @@ const columns = [
     },
     {
         name: 'Tarefas Pendentes',
-        selector: (row : any) => row.year,
+        selector: (row : any) => row.pendingTasks,
         center: true
     },
     {
         name: 'Tarefas Atrasadas',
-        selector: (row : any) => row.year,
+        selector: (row : any) => row.overdueTasks,
         center: true
     },
     {
@@ -55,9 +55,9 @@ const columns = [
     },
     {
         name: 'Risco',
-        selector: (row : any) => row.priority,
+        selector: (row : any) => row.risk,
         cell: (row : any, index : any, column : any, id : any) => {
-            switch(row.priority){
+            switch(row.risk){
                 case "high":
                     return (<Chip label="Alto" color="error" sx={{...pillStyle}} />)
                 case "medium":

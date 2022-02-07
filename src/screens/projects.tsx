@@ -16,6 +16,7 @@ import ProjectMembersAvatarRow from 'components/ProjectMembersAvatarRow';
 import InputAdornment from "@mui/material/InputAdornment";
 import { IconButton } from "@mui/material";
 import ProjectFilterRow from "components/ProjectFilterRow";
+import { useNavigate } from "react-router-dom";
 
 const pillStyle = {
     minWidth: "70px",
@@ -38,12 +39,12 @@ const columns = [
     },
     {
         name: 'Tarefas Pendentes',
-        selector: (row : any) => row.year,
+        selector: (row : any) => row.pendingTasks,
         center: true
     },
     {
         name: 'Tarefas Atrasadas',
-        selector: (row : any) => row.year,
+        selector: (row : any) => row.overdueTasks,
         center: true
     },
     {
@@ -65,9 +66,9 @@ const columns = [
     },
     {
         name: 'Risco',
-        selector: (row : any) => row.priority,
+        selector: (row : any) => row.risk,
         cell: (row : any, index : any, column : any, id : any) => {
-            switch(row.priority){
+            switch(row.risk){
                 case "high":
                     return (<Chip label="Alto" color="error" sx={{...pillStyle}} />)
                 case "medium":
@@ -83,6 +84,9 @@ const columns = [
 ];
 
 const ProjectsScreen = () => {
+
+    const navigate = useNavigate();
+
     return (
         <React.Fragment>
             <Toolbar />
@@ -115,7 +119,7 @@ const ProjectsScreen = () => {
                         responsive
                         striped
                         pagination
-                        onRowClicked={() =>alert("hey")}
+                        onRowClicked={(row) => {navigate(`/projects/${row.id}`)}}
                         pointerOnHover
                         highlightOnHover
                         customStyles={{headRow: {style: {backgroundColor: "#F2F2F2"}}}}
